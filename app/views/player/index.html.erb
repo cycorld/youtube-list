@@ -1,2 +1,7 @@
-<h1>Player#index</h1>
+<h1>Neogury Player</h1>
 <%=@list.id%>
+<ul>
+<% @list.clips.each do |c| %>
+  <li><%=c.url%></li>
+<% end %>
+</ul>
