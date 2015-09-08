@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'player/index'
+  post 'add' => 'player#add_clip'
 
   get '/(:id)' => 'player#index'
 

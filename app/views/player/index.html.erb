@@ -1,5 +1,11 @@
 <h1>Neogury Player</h1>
-<%=@list.id%>
+Share Link : <a href="/<%=@list.id%>">http://<%=request.host_with_port%>/<%=@list.id%></a>
+<br>
+<%=form_tag '/add' do %>
+  <input type="hidden" name="id" value=<%=params[:id]%>>
+  <input type="text" name="url" placeholder="http://youtube.com/123124">
+  <input type="submit" value="등록하기">
+<% end %>
 <ul>
 <% @list.clips.each do |c| %>
   <li><%=c.url%></li>
