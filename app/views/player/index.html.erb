@@ -53,7 +53,14 @@ Share Link : <a href="/<%=@list.id%>">http://<%=request.host_with_port%>/<%=@lis
     player.stopVideo();
   }
   function nextVideo() {
-    player.loadVideoById($now.parent().next().children().data("url"));
-    $now = $now.parent().next().children();
+    $next = $now.parent().next().children();
+    var next_url;
+    if ($next.length == 1) {
+      $now = $now.parent().next().children();
+    } else {
+      $now = $(".clips").first();
+    }
+    next_url = $now.data("url");
+    player.loadVideoById(next_url);
   }
 </script>
