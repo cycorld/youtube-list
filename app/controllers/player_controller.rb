@@ -2,8 +2,11 @@ class PlayerController < ApplicationController
   def index
     if List.where(id: params[:id]).take
       @list = List.find(params[:id])
+      @list.count += 1
+      @list.save!
     else
-      @list = List.last
+      @list = List.create()
+      redirect_to "/#{@list.id}"
     end
   end
 

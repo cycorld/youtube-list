@@ -1,9 +1,10 @@
 <h1>Neogury Player</h1>
+<a href="/">Make new list</a><br>
 Share Link : <a href="/<%=@list.id%>">http://<%=request.host_with_port%>/<%=@list.id%></a>
 <br>
 <%=form_tag '/add' do %>
   <input type="hidden" name="id" value=<%=params[:id]%>>
-  <input type="text" name="url" placeholder="http://youtube.com/123124">
+  <input type="text" name="url" placeholder="YOUTUBE ID">
   <input type="submit" value="등록하기">
 <% end %>
 <div id="player"></div>
@@ -12,6 +13,7 @@ Share Link : <a href="/<%=@list.id%>">http://<%=request.host_with_port%>/<%=@lis
   <li><img class="clips" src="http://img.youtube.com/vi/<%=c.url%>/hqdefault.jpg" data-url="<%=c.url%>"></li>
 <% end %>
 </ul>
+<% unless @list.clips.empty? %>
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
   $now = $(".clips").first();
@@ -64,3 +66,4 @@ Share Link : <a href="/<%=@list.id%>">http://<%=request.host_with_port%>/<%=@lis
     player.loadVideoById(next_url);
   }
 </script>
+<% end %>
